@@ -95,12 +95,17 @@ async function fakestoreproducts(){
 const url3 = 'https://api.thecatapi.com/v1/breeds'
 async function catsapi(){
     const response = await fetch(url3)
+    const ztoa = []
     const data = await response.json();
     data.map(i =>{
         if(i.country_codes == "US"){
             document.getElementById('country_codes').innerHTML += `<li> ${i.name} </li>`
         }
+        ztoa.unshift(i.name)
     })
+    ztoa.sort()
+    ztoa.reverse()
+    document.getElementById('catsztoa').innerHTML += `${ztoa}`
 }
 catsapi()
 fakestoreproducts()
